@@ -1,37 +1,28 @@
+import { useState } from "react";
 import "./App.css";
 import Employee from "./Employee";
 
 function App() {
-  const nameList = [
-    {
-      name: "john",
-      role: "intern",
-    },
-    {
-      name: "Thinira",
-      role: "Developer",
-    },
-    {
-      name: "Dinura",
-      role: "SeDev",
-    },
-    {
-      name: "Himasha",
-    },
-    {
-      name: "Sunil",
-      role: "",
-    },
-  ];
+  const [role, setRole] = useState();
   const showemployee = true;
   return (
     <div className="App">
       {showemployee ? (
-        nameList.map((student, index) => (
-          <Employee name={student.name} role={student.role} key={index} />
-        ))
+        <>
+          <input
+            type="text"
+            onChange={(e) => {
+              setRole(e.target.value);
+            }}
+          />
+          <Employee name="Thinira" role="jun/Dev" />
+          <Employee name="Himasha" role="senior/Dev" />
+          <Employee name="Shavindu" role="jun/Devops" />
+          <Employee name="Supun" role="cyberSequrity" />
+          <Employee name="Chamo" role={role} />
+        </>
       ) : (
-        <p>You can not see Employee</p>
+        <p>You can not See Employees</p>
       )}
     </div>
   );
